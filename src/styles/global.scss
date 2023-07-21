@@ -1,0 +1,25 @@
+@import "./tailwind.scss";
+@import "./base.scss";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --tag-play-width: "300px";
+}
+
+html {
+  /*兼容火狐方案*/
+  scrollbar-width: none;
+  /*兼容IE*/
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  /*兼容谷歌*/
+  display: none;
+}
+
+body {
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background-color: #fff;
+}

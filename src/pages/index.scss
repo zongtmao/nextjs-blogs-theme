@@ -1,0 +1,16 @@
+.tag-paly {
+  animation: tagPlay 10s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes tagPlay {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--tag-play-width));
+  }
+}
