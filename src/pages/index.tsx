@@ -1,10 +1,10 @@
 import { Card, Row, Col, Carousel } from "antd";
 import CustomCard from "@/components/custom-card";
+import Slider from "@/components/slider-card";
 import "./index.scss";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
-  const tagPlayRef = useRef<any>();
   const tagList = [
     {
       title: "Vue",
@@ -19,62 +19,68 @@ export default function Home() {
       cover: "https://p3-passport.byteimg.com/img/user-avatar/3a2e98873c71e5f395dabcff50622478~100x100.awebp",
     },
     {
-      title: "Js",
+      title: "JS",
       cover: "",
     },
     {
-      title: "Js1",
+      title: "Java",
       cover: "",
     },
     {
-      title: "J2",
-      cover: "",
+      title: "linux",
     },
     {
-      title: "J3",
-      cover: "",
-    },
-
-    {
-      title: "J7",
-      cover: "",
+      title: "shell",
     },
     {
-      title: "J11",
-      cover: "",
+      title: "node",
+    },
+    {
+      title: "koa",
+    },
+    {
+      title: "pm2",
+    },
+    {
+      title: "npm",
+    },
+    {
+      title: "pnpm",
     },
   ];
 
-  useEffect(() => {
-    // tagPlayRef.current.style.backgroundColor = "#666";
-    console.log(tagPlayRef.current.classList);
-    document.documentElement.style.setProperty("--tag-play-width", tagPlayRef.current.clientWidth);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
       <div className="main_box">
         <div className="home">
-          <Row gutter={16}>
+          <Row gutter={[16, 16]}>
+            {/* <Col span={24}>
+              <Carousel className="carousel w-[100%] h-[300px]">
+                <div className="w-[100%] h-[300px] text-center bg-black text-white">hhhh1</div>
+                <div className="w-[100%] h-[300px] text-center bg-black  text-white">hhhh2</div>
+                <div className="w-[100%] h-[300px] text-center bg-black  text-white">hhhh3s</div>
+              </Carousel>
+            </Col> */}
             <Col xs={24} md={12}>
               <Card hoverable>
                 <div className="h-[200px] bg-slate-50"></div>
               </Card>
             </Col>
             <Col xs={24} md={12}>
-              <Card className="overflow-hidden">
-                <div ref={tagPlayRef} className="h-[200px] grid grid-rows-2 grid-flow-col gap-8 tag-paly">
-                  {tagList.map((tag) => {
-                    return (
-                      <div key={tag.title} className="flex justify-center items-center">
-                        <CustomCard width={"90px"} height={"90px"} cover={tag.cover}>
-                          {tag.title}
-                        </CustomCard>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Card>
+              <div className="flex justify-around">
+                <Slider cardList={tagList}></Slider>
+                {/* {tagList.map((tag) => {
+                  return (
+                    <div key={tag.title} className="flex justify-center items-center">
+                      <CustomCard width={"90px"} height={"90px"} cover={tag.cover}>
+                        {tag.title}
+                      </CustomCard>
+                    </div>
+                  );
+                })} */}
+              </div>
             </Col>
           </Row>
         </div>

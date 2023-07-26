@@ -4,17 +4,19 @@ import "./index.scss";
 type cardProps = {
   width?: string;
   height?: string;
+  left?: string;
   background?: string;
   children?: ReactNode;
   cover?: string;
 };
 
 export default function CustomCard(props: cardProps) {
-  const { width = "80px", height = "80px", cover, children } = props;
+  const { width = "80px", height = "80px", left = "20px", cover, children } = props;
 
   let style = {
     width,
     height,
+    marginLeft: left,
     lineHeight: height,
   };
   if (cover) {
