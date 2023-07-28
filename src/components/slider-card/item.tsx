@@ -10,21 +10,19 @@ export default function SliderItem({ cardList, isSecond = false }: sliderItemPro
   return (
     <>
       <div className="slider-item">
-        <div className={`slider-item__main ${isSecond ? "second-first" : "other-first"}`}>
+        <div className={`${isSecond ? "second" : "other"}`}>
           {cardList!.length &&
             cardList!.map((tag) => {
               return (
-                <CustomCard key={tag.title} width={"90px"} height={"90px"} cover={tag.cover}>
+                <CustomCard key={tag.title} width={"120px"} height={"120px"} cover={tag.cover}>
                   {tag.title}
                 </CustomCard>
               );
             })}
-        </div>
-        <div className={`slider-item__main ${isSecond ? "second-first" : "other-first"}`}>
           {cardList!.length &&
             cardList!.map((tag) => {
               return (
-                <CustomCard key={tag.title} width={"90px"} height={"90px"} cover={tag.cover}>
+                <CustomCard key={tag.title} width={"120px"} height={"120px"} cover={tag.cover}>
                   {tag.title}
                 </CustomCard>
               );
