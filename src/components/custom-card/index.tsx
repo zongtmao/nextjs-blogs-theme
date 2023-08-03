@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "./index.scss";
+import classes from "./index.module.scss";
 
 type cardProps = {
   width?: string;
@@ -30,8 +30,8 @@ export default function CustomCard(props: cardProps) {
   }
   return (
     <>
-      <div className="custom-card" style={style}>
-        <div className="card-text">{children}</div>
+      <div className={classes.customCard} style={style}>
+        <div className={classes.cardText}>{children}</div>
       </div>
     </>
   );

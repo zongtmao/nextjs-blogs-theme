@@ -5,22 +5,22 @@
   overflow: hidden;
 }
 
-.slider-item {
+.sliderItem {
   width: 100%;
   height: 140px;
   position: relative;
   padding: 10px 0;
 
-  .second {
+  .first {
     position: absolute;
+    left: -55px;
     display: flex;
     align-items: center;
     animation: slider 60s linear infinite;
   }
 
-  .other {
+  .second {
     position: absolute;
-    left: -55px;
     display: flex;
     align-items: center;
     animation: slider 60s linear infinite;

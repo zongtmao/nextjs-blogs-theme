@@ -1,5 +1,5 @@
 import SliderItem from "./item";
-import "./index.scss";
+import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
 
 type sliderItemProps = {
@@ -24,7 +24,7 @@ export default function Slider({ cardList }: sliderItemProps) {
   }, [cardList]);
   return (
     <>
-      <div className="slider">
+      <div className={classes.slider}>
         <SliderItem cardList={arr1} />
         <SliderItem cardList={arr2} isSecond={true} />
       </div>

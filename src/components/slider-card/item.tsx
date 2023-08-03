@@ -1,4 +1,4 @@
-import "./index.scss";
+import classes from "./index.module.scss";
 import CustomCard from "../custom-card";
 
 type sliderItemProps = {
@@ -9,8 +9,8 @@ type sliderItemProps = {
 export default function SliderItem({ cardList, isSecond = false }: sliderItemProps) {
   return (
     <>
-      <div className="slider-item">
-        <div className={`${isSecond ? "second" : "other"}`}>
+      <div className={classes.sliderItem}>
+        <div className={`${isSecond ? classes.second : classes.first}`}>
           {cardList!.length &&
             cardList!.map((tag) => {
               return (
