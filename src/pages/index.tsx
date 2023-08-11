@@ -3,66 +3,36 @@ import Slider from "@/components/slider-card";
 import Footer from "@/components/footer";
 import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
-export default function Home() {
+import HeaderTitle from "@/components/header-title";
+
+type Props = {
+  userList: [any];
+};
+
+export default function Home(props: Props) {
   const [tagList, setTagList] = useState<any>([]);
 
+  const { userList }: any = props;
+
   useEffect(() => {
-    setTagList([
-      {
-        title: "Vue",
-        cover: "http://img.mrzym.top/Fr8-ZW07pZEvq2uwcfFJunxkTcLE",
-      },
-      {
-        title: "Ts",
-        cover: "http://img.mrzym.top/Fr8-ZW07pZEvq2uwcfFJunxkTcLE",
-      },
-      {
-        title: "React",
-        cover: "https://p3-passport.byteimg.com/img/user-avatar/3a2e98873c71e5f395dabcff50622478~100x100.awebp",
-      },
-      {
-        title: "JS",
-        cover: "http://img.mrzym.top/Fr8-ZW07pZEvq2uwcfFJunxkTcLE",
-      },
-      {
-        title: "FMT",
-        cover: "http://img.mrzym.top/FuBTokicmvyr9tA3x0z7KjXGEdWv",
-      },
-      {
-        title: "linux",
-      },
-      {
-        title: "shell",
-      },
-      {
-        title: "node",
-      },
-      {
-        title: "koa",
-      },
-      {
-        title: "pm2",
-      },
-      {
-        title: "npm",
-      },
-      {
-        title: "pnpm",
-      },
-    ]);
+    setTagList(
+      Array.isArray(userList)
+        ? userList.map((v: any) => {
+            return {
+              title: v.name,
+            };
+          })
+        : []
+    );
   }, []);
 
   return (
     <>
       <div className="main_box">
-        <div className="home">
+        <div className={classes.home}>
+          <HeaderTitle title="帅锅些" />
           <Row gutter={[16, 16]}>
-            <Col xs={24} md={12}>
-              <Card hoverable>
-                <div className="h-[232px] bg-slate-50"></div>
-              </Card>
-            </Col>
-            <Col xs={24} md={12}>
+            <Col span={24}>
               <div className="flex justify-around">
                 <Slider cardList={tagList}></Slider>
               </div>
@@ -73,4 +43,18 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let res: any;
+  await fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((json) => {
+      res = json;
+    });
+  return {
+    props: {
+      userList: res,
+    },
+  };
 }

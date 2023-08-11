@@ -7,6 +7,9 @@ type sliderItemProps = {
 };
 
 export default function SliderItem({ cardList, isSecond = false }: sliderItemProps) {
+  if (!cardList?.length) {
+    return <>暂无数据</>;
+  }
   return (
     <>
       <div className={classes.sliderItem}>

@@ -18,7 +18,7 @@ export default function Header() {
 
   const menus: MenuProps["items"] = [
     {
-      label: "home",
+      label: "主页",
       key: "/",
     },
     {
@@ -39,7 +39,8 @@ export default function Header() {
 
   return (
     <>
-      <Menu onClick={goToPath} selectedKeys={current} mode="horizontal" items={menus}></Menu>
+      <Menu className="header w-[100%] h-[80px] flex justify-center items-center" onClick={goToPath} selectedKeys={current} mode="horizontal" items={menus}></Menu>
+      <div className="h-[80px]"></div>
     </>
   );
 }
