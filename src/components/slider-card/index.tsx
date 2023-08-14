@@ -1,12 +1,10 @@
 import SliderItem from "./item";
 import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
+import { slider } from "@/type/component.type";
+import HeaderTitle from "@/components/header-title";
 
-type sliderItemProps = {
-  cardList: Array<any>;
-};
-
-export default function Slider({ cardList }: sliderItemProps) {
+export default function Slider({ cardList, headerTitleProps }: slider) {
   const [arr1, setArr1] = useState<any>([]);
   const [arr2, setArr2] = useState<any>([]);
   useEffect(() => {
@@ -20,6 +18,10 @@ export default function Slider({ cardList }: sliderItemProps) {
           arr2.push(v);
         }
       });
+      // 如果第二行数量不等于第一行，就用第一行的数据来补齐第二行
+      if (arr1.length != arr2.length) {
+        arr2.push(arr1[0]);
+      }
       setArr1(arr1);
       setArr2(arr2);
     }
@@ -27,6 +29,7 @@ export default function Slider({ cardList }: sliderItemProps) {
 
   return (
     <>
+      <HeaderTitle {...headerTitleProps} />
       <div className={classes.slider}>
         <SliderItem cardList={arr1} />
         <SliderItem cardList={arr2} isSecond={true} />

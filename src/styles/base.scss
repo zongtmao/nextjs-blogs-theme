@@ -1,39 +1,12 @@
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3009;
-}
-
 .main_box {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow: auto;
   background-color: #fff;
-  border-radius: 12px;
+  background: fixed;
+  background-image: url("../../public/image/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .ant-card-body {
   padding: 0;
-}
-
-// pc
-@media screen and (min-width: 798px) {
-  .main_box {
-    width: 1080px;
-    margin: 0 auto;
-    padding: 50px 80px;
-  }
-}
-
-// mobile
-@media screen and (max-width: 798px) {
-  .main_box {
-    width: 100vw;
-    margin: 0 auto;
-    padding: 8px;
-  }
 }

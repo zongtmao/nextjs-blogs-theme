@@ -1,10 +1,6 @@
 import classes from "./index.module.scss";
 import CustomCard from "../custom-card";
-
-type sliderItemProps = {
-  isSecond?: boolean;
-  cardList?: Array<any>;
-};
+import { sliderItemProps } from "@/type/component.type";
 
 export default function SliderItem({ cardList, isSecond = false }: sliderItemProps) {
   if (!cardList?.length) {
@@ -17,7 +13,7 @@ export default function SliderItem({ cardList, isSecond = false }: sliderItemPro
           {cardList!.length &&
             cardList!.map((tag) => {
               return (
-                <CustomCard key={tag.title} width={"120px"} height={"120px"} cover={tag.cover}>
+                <CustomCard key={tag.id} width={"160px"} height={"160px"} cover={tag.cover}>
                   {tag.title}
                 </CustomCard>
               );
@@ -25,7 +21,7 @@ export default function SliderItem({ cardList, isSecond = false }: sliderItemPro
           {cardList!.length &&
             cardList!.map((tag) => {
               return (
-                <CustomCard key={tag.title} width={"120px"} height={"120px"} cover={tag.cover}>
+                <CustomCard key={tag.id} width={"160px"} height={"160px"} cover={tag.cover}>
                   {tag.title}
                 </CustomCard>
               );
