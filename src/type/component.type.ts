@@ -27,6 +27,7 @@ export type headerTitleProps = {
 // 菜单
 export type menuProps = {
   menuList: Array<menu>;
+  menuBlur?: boolean;
   scrollTo: (id: string) => void;
 };
 

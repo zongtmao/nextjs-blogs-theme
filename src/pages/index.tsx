@@ -1,11 +1,15 @@
+import { createRef, useEffect, useRef, useState } from "react";
 import { Card, Row, Col } from "antd";
+
+import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
+import { getDomHeightById, getScrollTop } from "@/utils/hook";
+
+import Menu from "@/components/menu";
 import Slider from "@/components/slider-card";
 import Footer from "@/components/footer";
-import { createRef, useEffect, useRef, useState } from "react";
-import { cardProps } from "@/type/component.type";
 import HomeHeader from "@/components/home-header";
 import CenterBox from "@/components/center-box";
-import Menu from "@/components/menu";
+import React from "react";
 
 type Props = {
   hobbyList: [cardProps];
@@ -15,73 +19,112 @@ const myScrollTo = (id: string) => {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
 };
 
-export default function Home(props: Props) {
-  const [tagList, setTagList] = useState<Array<cardProps>>([]);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const menuRef = createRef();
+const domList: Array<string> = ["homeHeader", "slider", "other"];
 
-  const { hobbyList }: any = props;
-  const menuProps = {
-    menuList: [
-      {
-        id: "homeHeader",
-        title: "主页",
-      },
-      {
-        id: "slider",
-        title: "随心记",
-      },
-      {
-        id: "other",
-        title: "其他",
-      },
-    ],
-    scrollTo: myScrollTo,
+const menuProps: typeMenuProps = {
+  menuList: [
+    {
+      id: "homeHeader",
+      title: "主页",
+    },
+    {
+      id: "slider",
+      title: "随心记",
+    },
+    {
+      id: "other",
+      title: "其他",
+    },
+  ],
+  menuBlur: false,
+  scrollTo: myScrollTo,
+};
+
+class Home extends React.Component<Props> {
+  menuRef: React.RefObject<any>;
+
+  constructor(props: Props) {
+    super(props);
+    this.menuRef = createRef<any>();
+  }
+  state = {
+    tagList: [],
+    allDomObject: [],
+    menuProps: menuProps,
   };
 
-  const setActive = () => {
-    // menuRef?.current?.setMyActive(1);
+  setActive = () => {
+    this.menuRef?.current?.setMyActive(1);
   };
 
-  useEffect(() => {
-    setTagList(
-      Array.isArray(hobbyList)
-        ? hobbyList.map((v: any) => {
-            return {
-              id: v.id,
-              title: v.name,
-            };
-          })
-        : []
+  scrollListener = () => {
+    const h = getScrollTop(); // 滚动高度
+    this.setState(
+      Object.assign(this.state, {
+        menuProps: {
+          ...menuProps,
+          menuBlur: h >= 80 ? true : false,
+        },
+      })
     );
-  }, []);
+  };
 
-  return (
-    <>
-      <div className="main_box">
-        <Menu {...menuProps} ref={menuRef}></Menu>
-        {/* 主页第一页 */}
-        <div id="homeHeader">
-          <HomeHeader />
-        </div>
-        <div onClick={setActive}>hhh</div>
+  // 添加滚动事件
 
-        {/* 主页第二页 */}
-        <CenterBox>
-          <div id="slider">
-            <Slider cardList={tagList} headerTitleProps={{ title: "随心记", size: 28 }}></Slider>
+  componentDidMount(): void {
+    let tagList: Array<cardProps> = [],
+      list: any = [];
+
+    tagList = Array.isArray(this.props.hobbyList)
+      ? this.props.hobbyList.map((v: any) => {
+          return {
+            id: v.id,
+            title: v.name,
+          };
+        })
+      : [];
+
+    domList.forEach((dom: string, index: number) => {
+      list.push({
+        id: dom,
+        scrollTopHeight: index ? getDomHeightById(dom) + list[index - 1].scrollTopHeight : getDomHeightById(dom),
+      });
+    });
+    this.setState(Object.assign(this.state, { allDomObject: list, tagList }));
+
+    window.addEventListener("scroll", this.scrollListener);
+  }
+
+  componentWillUnmount(): void {
+    window.removeEventListener("scroll", this.scrollListener);
+  }
+
+  render() {
+    return (
+      <>
+        <div className="main_box">
+          <Menu {...this.state.menuProps} ref={this.menuRef}></Menu>
+          {/* 主页第一页 */}
+          <div id="homeHeader">
+            <HomeHeader />
           </div>
-          <div id="other" className="w-[100%] h-[100vh] bg-slate-400"></div>
-          <div className="w-[100%] h-[100vh] bg-slate-500"></div>
-          <div className="w-[100%] h-[100vh] bg-transparent"></div>
-        </CenterBox>
-        <CenterBox>
-          <div className="w-[100%] h-[100vh] bg-transparent"></div>
-        </CenterBox>
-        <Footer />
-      </div>
-    </>
-  );
+          {/* 主页第二页 */}
+          <CenterBox>
+            <div id="slider">
+              <Slider cardList={this.state.tagList} headerTitleProps={{ title: "随心记", size: 28 }}></Slider>
+            </div>
+            <div id="other" className="w-[100%] h-[100vh] bg-slate-400"></div>
+            <div className="w-[100%] h-[100vh] bg-slate-500"></div>
+            <div className="w-[100%] h-[100vh] bg-transparent"></div>
+          </CenterBox>
+          <CenterBox>
+            <div className="w-[100%] h-[100vh] bg-transparent"></div>
+          </CenterBox>
+          <Footer />
+        </div>
+      </>
+    );
+  }
 }
 
 export async function getStaticProps() {
@@ -154,3 +197,5 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default Home;
