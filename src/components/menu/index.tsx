@@ -1,19 +1,17 @@
 import { menuProps } from "@/type/component.type";
 import classes from "./menu.module.scss";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 
 const Menu = forwardRef((props: menuProps, menuRef: any) => {
   const { menuList, bgWhite, scrollTo } = props;
   const [active, setActive] = useState<number>(0);
 
+  // 设置高亮
   const setMyActive = (index: number) => {
     setActive(index);
   };
 
-  useEffect(() => {
-    console.log(bgWhite);
-  }, [bgWhite]);
-
+  // 使得父组件可以通过menuRef调用子组件方法
   useImperativeHandle(menuRef, () => ({ setMyActive }));
 
   return (

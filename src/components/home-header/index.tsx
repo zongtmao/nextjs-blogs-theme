@@ -14,7 +14,7 @@ export default function HomeHeader(props: any) {
         <Col xs={24} md={10}>
           <div className="w-[100%] h-[50vh] px-[50px] py-[30px] md:h-[100vh] flex flex-col justify-center items-start">
             <div className="w-[80%] md:w-[50%] flex flex-col justify-center items-end">
-              <Tween to={{ y: "-50px" }} duration={3} ease="elastic.out(2, 0.5)">
+              <Tween to={{ y: "-50px" }} stagger={0.05} duration={3} ease="elastic.out(2, 0.5)">
                 <div className="text-8xl break-keep">M</div>
                 <div className="text-2xl break-keep">abcdef</div>
                 <div className="text-2xl break-keep">hello ddd</div>
