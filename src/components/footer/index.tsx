@@ -2,7 +2,7 @@ import { Row, Col } from "antd";
 export default function Footer() {
   return (
     <>
-      <div className="h-[100%] w-[100vw] md:px-[50px] px-[10px] py-[10px] bg-white text-black">
+      <div className="w-[100%] md:px-[50px] px-[10px] py-[10px] bg-white rounded-lg text-black">
         <Row gutter={[16, 16]}>
           <Col xs={24} md={8}>
             <div className="text-3xl">关于我</div>

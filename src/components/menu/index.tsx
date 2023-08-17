@@ -3,7 +3,7 @@ import classes from "./menu.module.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 
 const Menu = forwardRef((props: menuProps, menuRef: any) => {
-  const { menuList, menuBlur, scrollTo } = props;
+  const { menuList, bgWhite, scrollTo } = props;
   const [active, setActive] = useState<number>(0);
 
   const setMyActive = (index: number) => {
@@ -11,15 +11,16 @@ const Menu = forwardRef((props: menuProps, menuRef: any) => {
   };
 
   useEffect(() => {
-    console.log(menuBlur);
-  }, [menuBlur]);
+    console.log(bgWhite);
+  }, [bgWhite]);
 
   useImperativeHandle(menuRef, () => ({ setMyActive }));
 
   return (
     <>
       <div className={classes.menuBg}>
-        <div className={`${menuBlur ? classes.maskBlur : classes.mask}`}></div>
+        <div className={`${classes.mask}`}></div>
+        <div className={`${bgWhite ? classes.bgWhite : ""}`}></div>
         <ul className={classes.menuBox}>
           {menuList.map((m, index) => {
             return (

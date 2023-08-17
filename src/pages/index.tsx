@@ -1,4 +1,5 @@
-import { createRef, useEffect, useRef, useState } from "react";
+import React from "react";
+import { createRef, useEffect } from "react";
 import { Card, Row, Col } from "antd";
 
 import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
@@ -9,7 +10,7 @@ import Slider from "@/components/slider-card";
 import Footer from "@/components/footer";
 import HomeHeader from "@/components/home-header";
 import CenterBox from "@/components/center-box";
-import React from "react";
+import HeaderTitle from "@/components/header-title";
 
 type Props = {
   hobbyList: [cardProps];
@@ -19,7 +20,7 @@ const myScrollTo = (id: string) => {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
 };
 
-const domList: Array<string> = ["homeHeader", "slider", "other"];
+const domList: Array<string> = ["homeHeader", "slider", "other", "bottom"];
 
 const menuProps: typeMenuProps = {
   menuList: [
@@ -35,8 +36,12 @@ const menuProps: typeMenuProps = {
       id: "other",
       title: "其他",
     },
+    {
+      id: "bottom",
+      title: "底部",
+    },
   ],
-  menuBlur: false,
+  bgWhite: false,
   scrollTo: myScrollTo,
 };
 
@@ -49,7 +54,7 @@ class Home extends React.Component<Props> {
   }
   state = {
     tagList: [],
-    allDomObject: [],
+    all: [],
     menuProps: menuProps,
   };
 
@@ -63,7 +68,7 @@ class Home extends React.Component<Props> {
       Object.assign(this.state, {
         menuProps: {
           ...menuProps,
-          menuBlur: h >= 80 ? true : false,
+          bgWhite: h >= 100 ? true : false,
         },
       })
     );
@@ -90,7 +95,7 @@ class Home extends React.Component<Props> {
         scrollTopHeight: index ? getDomHeightById(dom) + list[index - 1].scrollTopHeight : getDomHeightById(dom),
       });
     });
-    this.setState(Object.assign(this.state, { allDomObject: list, tagList }));
+    this.setState(Object.assign(this.state, { allDomObjectList: list, tagList }));
 
     window.addEventListener("scroll", this.scrollListener);
   }
@@ -109,18 +114,20 @@ class Home extends React.Component<Props> {
             <HomeHeader />
           </div>
           {/* 主页第二页 */}
-          <CenterBox>
-            <div id="slider">
+          <CenterBox bgColor="#fff">
+            <div id="slider" className="w-[100%] h-[100vh] pt-[60px]">
               <Slider cardList={this.state.tagList} headerTitleProps={{ title: "随心记", size: 28 }}></Slider>
             </div>
-            <div id="other" className="w-[100%] h-[100vh] bg-slate-400"></div>
-            <div className="w-[100%] h-[100vh] bg-slate-500"></div>
-            <div className="w-[100%] h-[100vh] bg-transparent"></div>
+            <div id="other" className="w-[100%] h-[100vh] bg-slate-300 pt-[60px]">
+              <HeaderTitle title="other" />
+            </div>
           </CenterBox>
           <CenterBox>
-            <div className="w-[100%] h-[100vh] bg-transparent"></div>
+            <div id="bottom" className="w-[100%] h-[100vh] bg-transparent pt-[60px]">
+              <HeaderTitle title="bottom" />
+              <Footer />
+            </div>
           </CenterBox>
-          <Footer />
         </div>
       </>
     );

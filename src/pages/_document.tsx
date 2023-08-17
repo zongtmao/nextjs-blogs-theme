@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
+import Image from "next/image";
 class MyDocument extends Document {
   render() {
     return (
@@ -7,6 +7,9 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
+          <div className="all_page_bg">
+            <Image src="/image/bg.avif" width={500} height={500} alt="" />
+          </div>
           <NextScript />
         </body>
       </Html>

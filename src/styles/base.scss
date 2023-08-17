@@ -1,12 +1,26 @@
 .main_box {
   background-color: #fff;
   background: fixed;
-  background-image: url("../../public/image/bg.jpg");
+  background-image: url("/image/mac.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
+.all_page_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .ant-card-body {
   padding: 0;
+}
+
+#homeHeader {
+  background-color: #fff;
 }
