@@ -1,10 +1,11 @@
 import React from "react";
-import { createRef, useEffect } from "react";
+import { createRef } from "react";
 import { Card, Row, Col } from "antd";
 import { ScrollTrigger, Tween } from "react-gsap";
 
 import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
 import { getDomHeightById, getScrollTop, getHalfScreenHeight } from "@/utils/hook";
+import { mySkillsList } from "../data";
 
 import Menu from "@/components/menu";
 import Slider from "@/components/slider-card";
@@ -14,14 +15,12 @@ import CenterBox from "@/components/center-box";
 import HeaderTitle from "@/components/header-title";
 
 type Props = {
-  hobbyList: [cardProps];
+  skillsList: [cardProps];
 };
 
 const myScrollTo = (id: string) => {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
 };
-
-const domList: Array<string> = ["homeHeader", "slider", "other", "bottom"];
 
 const menuProps: typeMenuProps = {
   menuList: [
@@ -30,21 +29,22 @@ const menuProps: typeMenuProps = {
       title: "主页",
     },
     {
-      id: "slider",
-      title: "随心记",
+      id: "skills",
+      title: "技能",
     },
     {
-      id: "other",
-      title: "其他",
+      id: "personalWorks",
+      title: "作品",
     },
     {
-      id: "bottom",
-      title: "底部",
+      id: "about",
+      title: "关于",
     },
   ],
   bgWhite: false,
   scrollTo: myScrollTo,
 };
+const domList: Array<string> = menuProps.menuList.map((v) => v.id);
 
 class Home extends React.Component<Props, any> {
   menuRef: React.RefObject<any>;
@@ -60,6 +60,7 @@ class Home extends React.Component<Props, any> {
     all: [],
     menuProps: menuProps,
     allDomObjectList: [] as Array<any>,
+    productList: [1, 2, 3, 4, 5, 6, 7] as Array<any>,
   };
 
   // 设置菜单高亮
@@ -73,7 +74,7 @@ class Home extends React.Component<Props, any> {
     this.setState({
       menuProps: {
         ...menuProps,
-        bgWhite: h >= 100 ? true : false,
+        bgWhite: getScrollTop() >= 100 ? true : false,
       },
     });
 
@@ -96,14 +97,7 @@ class Home extends React.Component<Props, any> {
       list: any = [];
 
     // 随心记列表
-    tagList = Array.isArray(this.props.hobbyList)
-      ? this.props.hobbyList.map((v: any) => {
-          return {
-            id: v.id,
-            title: v.name,
-          };
-        })
-      : [];
+    tagList = Array.isArray(this.props.skillsList) ? this.props.skillsList : [];
 
     // 需要收集高度滚动的dom列表
     domList.forEach((dom: string, index: number) => {
@@ -115,6 +109,8 @@ class Home extends React.Component<Props, any> {
     });
     this.setState({ allDomObjectList: list, tagList });
 
+    // 初始化设置菜单背景
+    this.scrollListener();
     // 添加滚动事件
     window.addEventListener("scroll", this.scrollListener);
   }
@@ -138,7 +134,7 @@ class Home extends React.Component<Props, any> {
           </div>
           {/* 主页第二页 */}
           <CenterBox bgColor="#fff">
-            <div id="slider" className="w-[100%] h-[100vh] pt-[60px]">
+            <div id="skills" className="w-[100%] h-[100vh] pt-[60px]">
               <ScrollTrigger start="-200px center" end="0px center" scrub={2}>
                 <Tween
                   from={{
@@ -149,18 +145,45 @@ class Home extends React.Component<Props, any> {
                   }}
                 >
                   <div>
-                    <Slider cardList={this.state.tagList} headerTitleProps={{ title: "随心记", size: 28 }}></Slider>
+                    <HeaderTitle {...{ title: "技能", size: 36 }} />
+                    <Slider cardList={this.state.tagList} cardItemHeight={280}></Slider>
                   </div>
                 </Tween>
               </ScrollTrigger>
             </div>
-            <div id="other" className="w-[100%] h-[100vh] bg-slate-300 pt-[60px]">
-              <HeaderTitle title="other" />
+          </CenterBox>
+          <CenterBox bgColor="#fff">
+            <div id="personalWorks" className="w-[100%] min-h-[100vh] pt-[60px]">
+              <ScrollTrigger start="-300px center" end="-200px center" scrub={2}>
+                <HeaderTitle {...{ title: "作品", size: 36 }} />
+                <Row gutter={[16, 16]}>
+                  {Array.isArray(this.state.productList) &&
+                    this.state.productList.map((v) => {
+                      return (
+                        <Tween
+                          key={v}
+                          from={{
+                            y: "200px",
+                            opacity: 1,
+                          }}
+                          to={{
+                            y: "0px",
+                            opacity: 0.5,
+                          }}
+                        >
+                          <Col xs={12} md={6}>
+                            <div className="w-[100%] h-[30vh] bg-slate-500">{v}</div>
+                          </Col>
+                        </Tween>
+                      );
+                    })}
+                </Row>
+              </ScrollTrigger>
             </div>
           </CenterBox>
           <CenterBox>
-            <div id="bottom" className="w-[100%] h-[100vh] bg-transparent pt-[60px]">
-              <HeaderTitle title="bottom" />
+            <div id="about" className="w-[100%] h-[100vh] bg-transparent pt-[60px] flex flex-col">
+              <HeaderTitle {...{ title: "关于", size: 36 }} />
               <Footer />
             </div>
           </CenterBox>
@@ -170,73 +193,11 @@ class Home extends React.Component<Props, any> {
   }
 }
 
+// 假装我打包时从后端取的数据 哈哈
 export async function getStaticProps() {
-  let res: any = [
-    {
-      id: 1,
-      name: "篮球",
-    },
-    {
-      id: 2,
-      name: "乒乓球",
-    },
-    {
-      id: 3,
-      name: "足球",
-    },
-    {
-      id: 4,
-      name: "Coding",
-    },
-    {
-      id: 5,
-      name: "吃饭",
-    },
-    {
-      id: 6,
-      name: "游泳",
-    },
-    {
-      id: 7,
-      name: "烧烤",
-    },
-    {
-      id: 8,
-      name: "啤酒",
-    },
-    {
-      id: 9,
-      name: "Vue",
-    },
-    {
-      id: 10,
-      name: "React",
-    },
-    {
-      id: 11,
-      name: "React",
-    },
-    {
-      id: 12,
-      name: "React",
-    },
-    {
-      id: 13,
-      name: "React",
-    },
-    {
-      id: 14,
-      name: "React",
-    },
-  ];
-  // await fetch("https://jsonplaceholder.typicode.com/users")
-  //   .then((response) => response.json())
-  //   .then((json) => {
-  //     res = json;
-  //   });
   return {
     props: {
-      hobbyList: res,
+      skillsList: mySkillsList,
     },
   };
 }

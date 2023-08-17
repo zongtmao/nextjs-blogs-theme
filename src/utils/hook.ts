@@ -12,6 +12,9 @@ export const getHalfScreenHeight = () => {
 export const getDomHeightById = (id: string) => {
   if (!id) return 0;
   const dom = document.getElementById(id);
+  if (!dom) {
+    console.error(`没有id为${id}的元素，请检查id是否正确`);
+  }
 
   return dom?.offsetHeight;
 };

@@ -2,9 +2,8 @@ import SliderItem from "./item";
 import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { slider } from "@/type/component.type";
-import HeaderTitle from "@/components/header-title";
 
-export default function Slider({ cardList, headerTitleProps }: slider) {
+export default function Slider({ cardList, cardItemHeight }: slider) {
   const [arr1, setArr1] = useState<any>([]);
   const [arr2, setArr2] = useState<any>([]);
   useEffect(() => {
@@ -29,10 +28,9 @@ export default function Slider({ cardList, headerTitleProps }: slider) {
 
   return (
     <>
-      <HeaderTitle {...headerTitleProps} />
       <div className={classes.slider}>
-        <SliderItem cardList={arr1} />
-        <SliderItem cardList={arr2} isSecond={true} />
+        <SliderItem cardList={arr1} height={cardItemHeight} />
+        <SliderItem cardList={arr2} height={cardItemHeight} isSecond={true} />
       </div>
     </>
   );

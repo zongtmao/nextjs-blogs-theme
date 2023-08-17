@@ -3,18 +3,22 @@ export type cardProps = {
   id: string | number;
   title: string;
   cover?: string;
+  color?: string;
+  background?: string;
+  backgroundImage?: string;
 };
 
 // slider组件
 export type sliderItemProps = {
+  height?: number;
   isSecond?: boolean;
   cardList: Array<cardProps>;
 };
 
 export type slider = {
   id?: string;
-  headerTitleProps: headerTitleProps;
   cardList: Array<cardProps>;
+  cardItemHeight?: number;
 };
 
 // 头部标题
