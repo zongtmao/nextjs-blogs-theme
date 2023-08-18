@@ -4,7 +4,6 @@ const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 
 // 将服务器与next.js连接，{ dev: process.env.NODE_ENV !== 'production' }表示是否开发模式调用next
-
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
