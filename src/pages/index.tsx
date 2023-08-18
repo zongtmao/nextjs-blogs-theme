@@ -97,7 +97,7 @@ class Home extends React.Component<Props, any> {
       list: any = [];
 
     // 随心记列表
-    tagList = Array.isArray(this.props.skillsList) ? this.props.skillsList : [];
+    tagList = Array.isArray(mySkillsList) ? mySkillsList : [];
 
     // 需要收集高度滚动的dom列表
     domList.forEach((dom: string, index: number) => {
@@ -191,15 +191,6 @@ class Home extends React.Component<Props, any> {
       </>
     );
   }
-}
-
-// 假装我打包时从后端取的数据 哈哈
-export async function getStaticProps() {
-  return {
-    props: {
-      skillsList: mySkillsList,
-    },
-  };
 }
 
 export default Home;
