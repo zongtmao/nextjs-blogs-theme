@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "next dev",
+    "serve": "next dev -p 3333",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "2": "^3.0.0",
     "@types/node": "^20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
