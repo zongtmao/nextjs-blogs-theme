@@ -2,7 +2,7 @@
  * @author: Zhang Yuming
  * @date: 2023-08-17 22:26:22
  * @description 技能列表
- * id 唯一的key
+ * id 唯一id
  * title 展示的标题
  * cover 卡片背景图片
  * color 标题字体颜色
@@ -10,7 +10,7 @@
  * backgroundImage 背景图片，用于渐变色
  * background 背景，可以写颜色之类的
 */
-export const mySkillsList = [
+const mySkillsList = [
   {
     id: 1,
     title: "Javascript",
@@ -96,3 +96,69 @@ export const mySkillsList = [
     title: "Java",
   },
 ];
+
+/*
+ * @author: Zhang Yuming
+ * @date: 2023-08-22 17:04:31
+ * @description: 个人作品列表
+ * id 唯一id
+ * workName 作品名称
+ * onlineAddress 在线预览地址
+ * codeAddress 作品源码链接
+ * description 作品描述
+ * cover 作品封面
+*/
+const myWorkList = [
+  {
+    id: 1,
+    workName: '小张的个人博客前台',
+    onlineAddress: 'http://mrzym.top',
+    codeAddress: 'https://gitee.com/mrzym/blog-v3',
+    description: '前后端分离博客前台，功能：文章、说说、留言、评论、相册、友链、音乐',
+    tag: ['Vue3', 'Element-Plus', 'TailWind.css'],
+    cover: '',
+  },
+  {
+    id: 2,
+    workName: '小张的个人博客管理后台',
+    onlineAddress: 'http://mrzym.top/admin',
+    codeAddress: 'https://gitee.com/mrzym/blog-v3-admin',
+    description: '前后端分离博客管理后台，功能：博客数据展示、文章管理、说说管理、留言管理、相册管理、友链管理',
+    tag: ['Vue3', 'Element-Plus', 'TailWind.css', 'PureAdmin', 'Vite'],
+    cover: '',
+  },
+  {
+    id: 3,
+    workName: '小张的个人博客后端服务',
+    onlineAddress: '',
+    codeAddress: 'https://gitee.com/mrzym/blogServer',
+    description: '前后端分离博客后端服务',
+    tag: ['Node.js', 'Koa'],
+    cover: '',
+  },
+  {
+    id: 4,
+    workName: 'react18项目',
+    onlineAddress: '',
+    codeAddress: 'https://gitee.com/mrzym/react-app',
+    description: '练习使用最新的react搭建项目',
+    tag: ['React', 'React-router'],
+    cover: '',
+  }
+]
+
+const sayingList = [
+  '前端开发时长两年半',
+  '热衷于学习前端最新技术',
+  '经常coding忘记回复女友消息',
+  '爱好唱、跳、rap、篮球',
+  '喜欢猫猫狗狗',
+  '热爱运动',
+]
+
+
+export {
+  mySkillsList,
+  myWorkList,
+  sayingList
+}

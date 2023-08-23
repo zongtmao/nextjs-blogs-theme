@@ -30,7 +30,7 @@ const Menu = forwardRef((props: menuProps, menuRef: any) => {
                   setActive(index);
                 }}
               >
-                {m.title}
+                <span className={classes.title}>{m.title}</span>
               </li>
             );
           })}

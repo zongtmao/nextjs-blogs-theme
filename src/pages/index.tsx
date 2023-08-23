@@ -1,11 +1,10 @@
 import React from "react";
 import { createRef } from "react";
-import { Card, Row, Col } from "antd";
 import { ScrollTrigger, Tween } from "react-gsap";
 
 import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
 import { getDomHeightById, getScrollTop, getHalfScreenHeight } from "@/utils/hook";
-import { mySkillsList } from "../data";
+import { mySkillsList, myWorkList, sayingList } from "../data";
 
 import Menu from "@/components/menu";
 import Slider from "@/components/slider-card";
@@ -13,10 +12,7 @@ import Footer from "@/components/footer";
 import HomeHeader from "@/components/home-header";
 import CenterBox from "@/components/center-box";
 import HeaderTitle from "@/components/header-title";
-
-type Props = {
-  skillsList: [cardProps];
-};
+import WorkList from "@/components/work-list";
 
 const myScrollTo = (id: string) => {
   document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
@@ -46,11 +42,11 @@ const menuProps: typeMenuProps = {
 };
 const domList: Array<string> = menuProps.menuList.map((v) => v.id);
 
-class Home extends React.Component<Props, any> {
+class Home extends React.Component<any, any> {
   menuRef: React.RefObject<any>;
   timer: any;
 
-  constructor(props: Props) {
+  constructor(props: any) {
     super(props);
     this.menuRef = createRef<any>();
     this.timer = null;
@@ -60,7 +56,7 @@ class Home extends React.Component<Props, any> {
     all: [],
     menuProps: menuProps,
     allDomObjectList: [] as Array<any>,
-    productList: [1, 2, 3, 4, 5, 6, 7] as Array<any>,
+    workList: [] as Array<any>,
   };
 
   // 设置菜单高亮
@@ -94,10 +90,14 @@ class Home extends React.Component<Props, any> {
 
   componentDidMount(): void {
     let tagList: Array<cardProps> = [],
+      workList: Array<any> = [],
       list: any = [];
 
-    // 随心记列表
+    // 技能列表
     tagList = Array.isArray(mySkillsList) ? mySkillsList : [];
+
+    // 作品列表
+    workList = Array.isArray(myWorkList) ? myWorkList : [];
 
     // 需要收集高度滚动的dom列表
     domList.forEach((dom: string, index: number) => {
@@ -107,7 +107,7 @@ class Home extends React.Component<Props, any> {
         scrollTopHeight: index ? getDomHeightById(dom) + list[index - 1].scrollTopHeight : getDomHeightById(dom),
       });
     });
-    this.setState({ allDomObjectList: list, tagList });
+    this.setState({ allDomObjectList: list, tagList, workList });
 
     // 初始化设置菜单背景
     this.scrollListener();
@@ -130,7 +130,7 @@ class Home extends React.Component<Props, any> {
           <Menu {...this.state.menuProps} ref={this.menuRef}></Menu>
           {/* 主页第一页 */}
           <div id="homeHeader">
-            <HomeHeader />
+            <HomeHeader {...{ sayingList }} />
           </div>
           {/* 主页第二页 */}
           <CenterBox bgColor="#fff">
@@ -138,7 +138,7 @@ class Home extends React.Component<Props, any> {
               <ScrollTrigger start="-200px center" end="0px center" scrub={2}>
                 <Tween
                   from={{
-                    x: "-200px",
+                    x: "200px",
                   }}
                   to={{
                     x: "0px",
@@ -154,31 +154,8 @@ class Home extends React.Component<Props, any> {
           </CenterBox>
           <CenterBox bgColor="#fff">
             <div id="personalWorks" className="w-[100%] min-h-[100vh] pt-[60px]">
-              <ScrollTrigger start="-300px center" end="-200px center" scrub={2}>
-                <HeaderTitle {...{ title: "作品", size: 36 }} />
-                <Row gutter={[16, 16]}>
-                  {Array.isArray(this.state.productList) &&
-                    this.state.productList.map((v) => {
-                      return (
-                        <Tween
-                          key={v}
-                          from={{
-                            y: "200px",
-                            opacity: 1,
-                          }}
-                          to={{
-                            y: "0px",
-                            opacity: 0.5,
-                          }}
-                        >
-                          <Col xs={12} md={6}>
-                            <div className="w-[100%] h-[30vh] bg-slate-500">{v}</div>
-                          </Col>
-                        </Tween>
-                      );
-                    })}
-                </Row>
-              </ScrollTrigger>
+              <HeaderTitle {...{ title: "作品", size: 36 }} />
+              <WorkList workList={this.state.workList} />
             </div>
           </CenterBox>
           <CenterBox>
