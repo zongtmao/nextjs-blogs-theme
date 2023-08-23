@@ -1,5 +1,19 @@
 /*
  * @author: Zhang Yuming
+ * @date: 2023-08-23 11:44:30
+ * @description: 首页介绍自己的说，想说什么就写什么
+*/
+const sayingList = [
+  '前端开发时长两年半',
+  '热衷于学习前端最新技术',
+  '经常coding忘记回复女友消息',
+  '爱好唱、跳、rap、篮球',
+  '喜欢猫猫狗狗',
+  '热爱运动',
+]
+
+/*
+ * @author: Zhang Yuming
  * @date: 2023-08-17 22:26:22
  * @description 技能列表
  * id 唯一id
@@ -116,7 +130,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3',
     description: '前后端分离博客前台，功能：文章、说说、留言、评论、相册、友链、音乐',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css'],
-    cover: '',
+    cover: '/image/bottom-bg.jpg',
   },
   {
     id: 2,
@@ -125,7 +139,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3-admin',
     description: '前后端分离博客管理后台，功能：博客数据展示、文章管理、说说管理、留言管理、相册管理、友链管理',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css', 'PureAdmin', 'Vite'],
-    cover: '',
+    cover: '/image/bottom-bg.jpg',
   },
   {
     id: 3,
@@ -134,7 +148,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blogServer',
     description: '前后端分离博客后端服务',
     tag: ['Node.js', 'Koa'],
-    cover: '',
+    cover: '/image/bottom-bg.jpg',
   },
   {
     id: 4,
@@ -143,22 +157,109 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/react-app',
     description: '练习使用最新的react搭建项目',
     tag: ['React', 'React-router'],
-    cover: '',
+    cover: '/image/bottom-bg.jpg',
   }
 ]
 
-const sayingList = [
-  '前端开发时长两年半',
-  '热衷于学习前端最新技术',
-  '经常coding忘记回复女友消息',
-  '爱好唱、跳、rap、篮球',
-  '喜欢猫猫狗狗',
-  '热爱运动',
-]
 
+/**
+ * 底部
+ * 链接
+ * 填入什么展示什么
+ * title表示最顶层的标题
+ * 
+ * id 唯一的key
+ * title 展示的标题
+ * url 跳转的地址
+ * icon 图标
+ * ...
+ */
+const footerList = [
+  {
+    title: '方便找到我的链接 🔗',
+    list: [
+      {
+        id: 1,
+        title: '秋秋    🐧',
+        icon: '',
+        url: 'http://wpa.qq.com/msgrd?v=3&uin=2715158815&site=qq&menu=yes'
+      },
+      {
+        id: 3,
+        title: '稀土掘金',
+        icon: '',
+        url: ''
+      },
+      {
+        id: 4,
+        title: 'CSDN',
+        icon: '',
+        url: ''
+      },
+      {
+        id: 5,
+        title: 'BiliBili',
+        icon: '',
+        url: ''
+      },
+      {
+        id: 6,
+        title: 'Gitee',
+        icon: '',
+        url: ''
+      },
+      {
+        id: 7,
+        title: 'Github',
+        icon: '',
+        url: ''
+      }
+    ]
+  },
+  {
+    title: '近期的目标 🎯',
+    list: [
+      {
+        id: 1,
+        title: '写写react项目',
+      },
+      {
+        id: 2,
+        title: '学学canvas',
+      },
+      {
+        id: 3,
+        title: '搞搞Three.js',
+      },
+      {
+        id: 4,
+        title: '写点技术博客',
+      }
+    ]
+  },
+  {
+    title: '关于我 🏠',
+    list: [
+      {
+        id: 1,
+        title: '99后    🧍‍♂️',
+      },
+      {
+        id: 2,
+        title: '闷骚  🧹',
+      },
+      {
+        id: 3,
+        title: '喜欢摆龙门阵  🤥',
+      }
+    ]
+  },
+
+]
 
 export {
   mySkillsList,
   myWorkList,
-  sayingList
+  sayingList,
+  footerList
 }

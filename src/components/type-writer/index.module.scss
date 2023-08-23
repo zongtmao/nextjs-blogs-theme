@@ -1,17 +1,11 @@
 .typeWriter {
-  position: relative;
-  color: #000;
-  font-size: 1em;
   cursor: pointer;
-  &::after {
-    content: "|";
-    position: absolute;
-    right: -3px;
-    top: -1px;
-    animation: showInfinite 0.8s infinite both;
-  }
+  color: #000;
 }
 
+.space {
+  animation: showInfinite 0.8s infinite both;
+}
 @keyframes showInfinite {
   0% {
     opacity: 1;

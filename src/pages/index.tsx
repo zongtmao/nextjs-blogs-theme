@@ -4,7 +4,7 @@ import { ScrollTrigger, Tween } from "react-gsap";
 
 import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
 import { getDomHeightById, getScrollTop, getHalfScreenHeight } from "@/utils/hook";
-import { mySkillsList, myWorkList, sayingList } from "../data";
+import { mySkillsList, myWorkList, sayingList, footerList } from "../data";
 
 import Menu from "@/components/menu";
 import Slider from "@/components/slider-card";
@@ -22,19 +22,19 @@ const menuProps: typeMenuProps = {
   menuList: [
     {
       id: "homeHeader",
-      title: "主页",
+      title: "Home",
     },
     {
       id: "skills",
-      title: "技能",
+      title: "Skills",
     },
     {
       id: "personalWorks",
-      title: "作品",
+      title: "Works",
     },
     {
       id: "about",
-      title: "关于",
+      title: "About",
     },
   ],
   bgWhite: false,
@@ -145,7 +145,7 @@ class Home extends React.Component<any, any> {
                   }}
                 >
                   <div>
-                    <HeaderTitle {...{ title: "技能", size: 36 }} />
+                    <HeaderTitle {...{ title: "Skills", size: 36 }} />
                     <Slider cardList={this.state.tagList} cardItemHeight={280}></Slider>
                   </div>
                 </Tween>
@@ -154,14 +154,14 @@ class Home extends React.Component<any, any> {
           </CenterBox>
           <CenterBox bgColor="#fff">
             <div id="personalWorks" className="w-[100%] min-h-[100vh] pt-[60px]">
-              <HeaderTitle {...{ title: "作品", size: 36 }} />
+              <HeaderTitle {...{ title: "Works", size: 36 }} />
               <WorkList workList={this.state.workList} />
             </div>
           </CenterBox>
           <CenterBox>
-            <div id="about" className="w-[100%] h-[100vh] bg-transparent pt-[60px] flex flex-col">
-              <HeaderTitle {...{ title: "关于", size: 36 }} />
-              <Footer />
+            <div id="about" className="w-[100%]  bg-transparent pt-[60px] flex flex-col">
+              <HeaderTitle {...{ title: "About", size: 36, color: "rgb(148 163 184)" }} />
+              <Footer {...{ footerList }} />
             </div>
           </CenterBox>
         </div>

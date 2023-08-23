@@ -2,7 +2,7 @@ import { headerTitleProps } from "@/type/component.type";
 import classes from "./index.module.scss";
 
 export default function HeaderTitle(props: headerTitleProps) {
-  const { icon, title, size } = props;
+  const { icon, title, size, color = "#000" } = props;
   if (!title) {
     console.error("HeaderTitle need a title prop!");
     return;
@@ -10,6 +10,7 @@ export default function HeaderTitle(props: headerTitleProps) {
 
   const style = {
     fontSize: size ? size + "px" : 16 + "px",
+    color,
   };
 
   if (!icon) {

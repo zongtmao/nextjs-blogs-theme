@@ -1,34 +1,70 @@
-export default function Footer() {
+import { ScrollTrigger, Tween, SplitChars } from "react-gsap";
+
+type footerProps = {
+  color?: string; // 字体颜色
+  footerList: Array<footer>;
+};
+type footer = {
+  title?: string;
+  list: Array<link>;
+};
+type link = {
+  id: string | number; // 唯一的key
+  title: string; // 名称
+  url?: string; // 链接地址
+  icon?: string; // 图标
+};
+
+export default function Footer({ color = "rgb(148 163 184)", footerList = [] }: footerProps) {
+  const goBlank = (url: string | undefined) => {
+    if (url) {
+      window.open(url);
+    }
+  };
   return (
     <>
-      <div className="flex-1 flex-col] py-[10px] justify-between rounded-lg  relative">
-        <div className="absolute w-[100%] blur-sm h-[100%]" style={{ backgroundColor: `rgba(255,255,255,0.2)` }}></div>
-        <div className="w-[100%] h-[60%]  text-slate-900 flex justify-between flex-col md:flex-row">
-          <ul className="mt-[10px]">
-            <div className="text-3xl">关于我</div>
-            <li>一名热爱敲代码的前端开发</li>
-            <li>坤哥真爱粉</li>
-            <li>闷骚</li>
-          </ul>
-          <ul className="mt-[10px]">
-            <div className="text-3xl">一些链接</div>
-            <li>小张的前后端分离博客</li>
-            <li>稀土掘金</li>
-            <li>CSDN</li>
-            <li>哔哩哔哩</li>
-            <li>Github</li>
-          </ul>
-          <ul className="mt-[10px]">
-            <div className="text-3xl">不知道想搞点什么</div>
-            <div className="mt-[10px] text-xl">搞点近期目标吧</div>
-            <li>写写react项目</li>
-            <li>学学canvas</li>
-            <li>搞搞three</li>
-            <li>写点技术博客</li>
-          </ul>
+      <ScrollTrigger start="-500px center" end="-300px center" scrub={2}>
+        <div className="flex flex-col px-[1px] justify-between rounded-lg ">
+          <div className="w-[100%] min-h-[60vh] rounded-lg  flex justify-around flex-col md:flex-row">
+            {footerList.map((footer) => {
+              return (
+                <Tween
+                  key={footer.title}
+                  from={{
+                    y: "220px",
+                  }}
+                  to={{
+                    y: "0px",
+                  }}
+                  duration={3}
+                >
+                  <ul style={{ color }} className="mt-[10px]">
+                    <div className="text-2xl leading-loose whitespace-pre">{footer.title}</div>
+                    <div className="flex flex-wrap">
+                      {footer.list.map((l) => {
+                        return (
+                          <li onClick={() => goBlank(l.url)} key={l.id} className="leading-relaxed mb-[8px]">
+                            {l.url ? (
+                              <button className="whitespace-pre bg-violet-500 hover:bg-violet-600 hover:outline-none hover:ring hover:ring-violet-300 rounded-3xl text-white py-[5px] px-[25px] m-[5px]"> {l.title}</button>
+                            ) : (
+                              <button className="whitespace-pre bg-violet-500  rounded-3xl text-white py-[5px] px-[25px] m-[5px]"> {l.title}</button>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </div>
+                  </ul>
+                </Tween>
+              );
+            })}
+          </div>
+          <div className="w-[100%] flex h-[30vh] justify-center items-center text-3xl">
+            <Tween from={{ x: "100px" }} stagger={0.3}>
+              <SplitChars wrapper={<div style={{ display: "inline-block", fontSize: "36px", color }} />}>今天又是美好的一天</SplitChars>
+            </Tween>
+          </div>
         </div>
-        <div className="w-[100%] h-[30%] flex flex-col justify-center items-center text-black">小张啊小张 ，你在干什么</div>
-      </div>
+      </ScrollTrigger>
     </>
   );
 }

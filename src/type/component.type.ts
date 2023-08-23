@@ -26,6 +26,7 @@ export type headerTitleProps = {
   title: string;
   icon?: string;
   size?: number;
+  color?: string;
 };
 
 // 菜单

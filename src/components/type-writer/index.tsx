@@ -2,13 +2,15 @@ import { useEffect } from "react";
 import classes from "./index.module.scss";
 
 type typeWriterProps = {
+  id?: string;
   writerList: Array<string>; // 打印文字列表
   timeSpace?: number; // 句子与句子之间的播放间隔
   wordPrintTime?: number; // 一个字打印的时间长度
   size?: string; // 字体大小
+  color?: string; //字体颜色
 };
 
-export default function TypeWriter({ writerList = [], timeSpace = 0.8, wordPrintTime = 0.3, size = "1em" }: typeWriterProps) {
+export default function TypeWriter({ id = "writer", writerList = [], timeSpace = 0.8, wordPrintTime = 0.3, size = "1em", color }: typeWriterProps) {
   let arr: Array<NodeJS.Timeout> = [];
   useEffect(() => {
     if (!writerList.length) return;
@@ -38,7 +40,7 @@ export default function TypeWriter({ writerList = [], timeSpace = 0.8, wordPrint
 
     loopList.forEach((loop, index) => {
       let timer: NodeJS.Timeout = setTimeout(() => {
-        const writers = document.getElementById("writer");
+        const writers = document.getElementById(id);
         let num = 0,
           str = "";
         let interTimer: any = setInterval(() => {
@@ -63,7 +65,10 @@ export default function TypeWriter({ writerList = [], timeSpace = 0.8, wordPrint
 
   return (
     <>
-      <div id="writer" className={classes.typeWriter} style={{ fontSize: size }}></div>
+      <div style={{ color, fontSize: size }} className={classes.typeWriter}>
+        <span id={id}></span>
+        <span className={classes.space}>|</span>
+      </div>
     </>
   );
 }
