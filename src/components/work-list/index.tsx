@@ -1,4 +1,3 @@
-import { useEffect, useState, useMemo } from "react";
 import { ScrollTrigger, Tween } from "react-gsap";
 
 import Work from "./work";
