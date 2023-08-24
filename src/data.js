@@ -28,15 +28,15 @@ const mySkillsList = [
   {
     id: 1,
     title: "Javascript",
-    cover: "http://img.mrzym.top/Fr8-ZW07pZEvq2uwcfFJunxkTcLE",
-    color: "#fff",
+    color: '#a991f5',
+    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
     fontSize: "32px",
   },
   {
     id: 2,
     title: "Html",
     backgroundImage: "linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%)",
-    color: "#fff",
+    color: "#f0482c",
     fontSize: "36px",
   },
   {
@@ -44,70 +44,72 @@ const mySkillsList = [
     title: "Css",
     backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
     fontSize: "28px",
+    color: '#75a3c1',
   },
   {
     id: 4,
     title: "Vue",
-    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    backgroundImage: "linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%)",
     fontSize: "36px",
+    color: '#42b883'
   },
   {
     id: 5,
     title: "React",
-    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    backgroundImage: "linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%)",
+    color: '#0a7ea4'
   },
   {
     id: 6,
     title: "Next",
-    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    backgroundImage: "linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%)",
+    color: "#000"
   },
   {
     id: 7,
     title: "Element",
     backgroundImage: "linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)",
+    color: '#409eff'
   },
   {
     id: 8,
     title: "AntDesign",
-    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    backgroundImage: "linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%)",
+    color: '#1777ff'
   },
   {
     id: 9,
     title: "Tailwind",
     backgroundImage: "linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%)",
+    color: '#38bdf9'
   },
   {
     id: 10,
     title: "GSAP",
-    backgroundImage: " linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%)",
+    backgroundImage: "linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%)",
+    color: ''
   },
   {
     id: 11,
     title: "Canvas",
     backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    color: ''
   },
   {
     id: 12,
-    title: "WebGL",
-    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
+    title: "Node",
+    backgroundImage: "linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%)",
+    color: '#80bd43'
   },
   {
     id: 13,
-    title: "Three",
-    backgroundImage: "linear-gradient(to right, #00dbde 0%, #fc00ff 100%)",
+    title: "Koa",
+    backgroundImage: "linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%)",
   },
   {
     id: 14,
-    title: "Node",
-  },
-  {
-    id: 15,
-    title: "Koa",
-    backgroundImage: "linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%)",
-  },
-  {
-    id: 16,
     title: "Java",
+    backgroundImage: "linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%)",
   },
 ];
 
@@ -130,7 +132,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3',
     description: '前后端分离博客前台，功能：文章、说说、留言、评论、相册、友链、音乐',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css'],
-    cover: '/image/bottom-bg.jpg',
+    cover: '/work/blogV3.png',
   },
   {
     id: 2,
@@ -139,7 +141,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3-admin',
     description: '前后端分离博客管理后台，功能：博客数据展示、文章管理、说说管理、留言管理、相册管理、友链管理',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css', 'PureAdmin', 'Vite'],
-    cover: '/image/bottom-bg.jpg',
+    cover: '/work/blogV3Admin.png',
   },
   {
     id: 3,
@@ -148,16 +150,16 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blogServer',
     description: '前后端分离博客后端服务',
     tag: ['Node.js', 'Koa'],
-    cover: '/image/bottom-bg.jpg',
+    cover: '/work/blogServer.png',
   },
   {
     id: 4,
     workName: 'react18项目',
-    onlineAddress: '',
+    onlineAddress: 'https://gitee.com/mrzym/react-app',
     codeAddress: 'https://gitee.com/mrzym/react-app',
     description: '练习使用最新的react搭建项目',
     tag: ['React', 'React-router'],
-    cover: '/image/bottom-bg.jpg',
+    cover: '/work/react18.png',
   }
 ]
 
@@ -188,25 +190,25 @@ const footerList = [
         id: 3,
         title: '稀土掘金',
         icon: '',
-        url: ''
+        url: 'https://juejin.cn/user/1297845830559559'
       },
       {
         id: 4,
         title: 'CSDN',
         icon: '',
-        url: ''
+        url: 'https://blog.csdn.net/abcd123596?spm=1000.2115.3001.5343'
       },
       {
         id: 5,
         title: 'BiliBili',
         icon: '',
-        url: ''
+        url: 'https://space.bilibili.com/419858932?spm_id_from=333.1007.0.0'
       },
       {
         id: 6,
         title: 'Gitee',
         icon: '',
-        url: ''
+        url: 'https://gitee.com/mrzym'
       },
       {
         id: 7,

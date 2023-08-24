@@ -41,8 +41,9 @@
 .menuItem {
   padding: 0 12px;
   cursor: pointer;
-  height: 30px;
-  line-height: 30px;
+  height: 33px;
+  line-height: 27px;
+  border: 3px solid transparent;
 }
 
 .title {
@@ -50,12 +51,14 @@
 }
 
 .title:hover {
-  border-bottom: 2px solid #000;
+  border-radius: 10px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
 }
 
 .active {
   color: #fff;
   background-color: #000;
   transition: color 0.1s ease, background-color 0.3s ease;
-  border-radius: 15px;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
 }

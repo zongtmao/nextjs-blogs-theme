@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <div className="all_page_bg">
-            <Image src="/image/bg.avif" width={1000} height={1000} alt="" />
+            <Image src="/bg/bg.avif" width={1000} height={1000} alt="" />
           </div>
           <NextScript />
         </body>

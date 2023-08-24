@@ -32,7 +32,7 @@ export default function HomeHeader(props: any) {
               x: "0px",
             }}
           >
-            <div className="w-[100%] h-[100vh] md:w-[50%]   grid place-items-center">暂定一个时钟动画</div>
+            <div className="w-[100%] h-[100vh] md:w-[50%]   grid place-items-center">不知道放点什么</div>
           </Tween>
         </div>
       </Reveal>

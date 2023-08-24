@@ -56,7 +56,6 @@ class Home extends React.Component<any, any> {
     all: [],
     menuProps: menuProps,
     allDomObjectList: [] as Array<any>,
-    workList: [] as Array<any>,
   };
 
   // 设置菜单高亮
@@ -90,14 +89,10 @@ class Home extends React.Component<any, any> {
 
   componentDidMount(): void {
     let tagList: Array<cardProps> = [],
-      workList: Array<any> = [],
       list: any = [];
 
     // 技能列表
     tagList = Array.isArray(mySkillsList) ? mySkillsList : [];
-
-    // 作品列表
-    workList = Array.isArray(myWorkList) ? myWorkList : [];
 
     // 需要收集高度滚动的dom列表
     domList.forEach((dom: string, index: number) => {
@@ -107,7 +102,7 @@ class Home extends React.Component<any, any> {
         scrollTopHeight: index ? getDomHeightById(dom) + list[index - 1].scrollTopHeight : getDomHeightById(dom),
       });
     });
-    this.setState({ allDomObjectList: list, tagList, workList });
+    this.setState({ allDomObjectList: list, tagList });
 
     // 初始化设置菜单背景
     this.scrollListener();
@@ -155,7 +150,7 @@ class Home extends React.Component<any, any> {
           <CenterBox bgColor="#fff">
             <div id="personalWorks" className="w-[100%] min-h-[100vh] pt-[60px]">
               <HeaderTitle {...{ title: "Works", size: 36 }} />
-              <WorkList workList={this.state.workList} />
+              <WorkList workList={myWorkList} />
             </div>
           </CenterBox>
           <CenterBox>
