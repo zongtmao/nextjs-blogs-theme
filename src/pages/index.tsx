@@ -14,10 +14,6 @@ import CenterBox from "@/components/center-box";
 import HeaderTitle from "@/components/header-title";
 import WorkList from "@/components/work-list";
 
-const myScrollTo = (id: string) => {
-  document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
-};
-
 const menuProps: typeMenuProps = {
   menuList: [
     {
@@ -38,18 +34,20 @@ const menuProps: typeMenuProps = {
     },
   ],
   bgWhite: false,
-  scrollTo: myScrollTo,
+  scrollTo: () => {},
 };
 const domList: Array<string> = menuProps.menuList.map((v) => v.id);
 
 class Home extends React.Component<any, any> {
   menuRef: React.RefObject<any>;
   timer: any;
+  isClick: boolean;
 
   constructor(props: any) {
     super(props);
     this.menuRef = createRef<any>();
     this.timer = null;
+    this.isClick = false;
   }
   state = {
     tagList: [],
@@ -58,6 +56,13 @@ class Home extends React.Component<any, any> {
     allDomObjectList: [] as Array<any>,
   };
 
+  myScrollTo = (id: string) => {
+    this.isClick = true;
+    document.querySelector("#" + id)?.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      this.isClick = false;
+    }, 1000);
+  };
   // 设置菜单高亮
   setActive = (index: number) => {
     this.menuRef?.current?.setMyActive(index);
@@ -69,6 +74,7 @@ class Home extends React.Component<any, any> {
     this.setState({
       menuProps: {
         ...menuProps,
+        scrollTo: this.myScrollTo,
         bgWhite: getScrollTop() >= 100 ? true : false,
       },
     });
@@ -81,6 +87,8 @@ class Home extends React.Component<any, any> {
     this.timer = setTimeout(() => {
       this.state.allDomObjectList.forEach((v, index) => {
         if (h >= v.lastScrollHeight && h < v.scrollTopHeight) {
+          // 根据高度滚动设置菜单高亮
+          if (this.isClick) return;
           this.setActive(index);
         }
       });

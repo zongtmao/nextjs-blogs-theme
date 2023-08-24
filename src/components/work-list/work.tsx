@@ -75,8 +75,8 @@ export default function Work({ list, width, id }: workProps) {
         {arr.map((work) => {
           return (
             <div key={work.id} className={classes.workCard} onClick={() => goBlank(work.onlineAddress)}>
-              <div className="grid place-items-center w-[100%] h-[200px]">
-                <Image className="w-[100%] h-[200px]" src={work.cover} alt={work.workName} width={800} height={100} loading="lazy" />
+              <div className="grid place-items-center w-[100%] h-[120px] sm:h-[200px]">
+                <Image className="w-[100%] h-[120px] sm:h-[200px]" src={work.cover} alt={work.workName} width={800} height={100} priority={true} />
               </div>
               <div className={classes.cardBody}>
                 <div className="text-md text-left w-[100%] font-semibold">{work.workName}</div>
@@ -85,7 +85,7 @@ export default function Work({ list, width, id }: workProps) {
                   {Array.isArray(work.tag) && work.tag.length
                     ? work.tag.map((t: any) => {
                         return (
-                          <button key={t} className="bg-violet-500  hover:bg-violet-600 outline-none ring ring-violet-200 rounded-3xl text-white m-[3px] p-[5px]">
+                          <button key={t} className="text-xs bg-violet-500  hover:bg-violet-600 outline-none ring ring-violet-200 rounded-3xl text-white m-[3px] p-[5px]">
                             {t}
                           </button>
                         );

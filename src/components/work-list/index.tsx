@@ -36,7 +36,7 @@ export default class WorkList extends React.Component<Record<string, Array<Work>
     arr3: [] as Array<any>,
     current: 1 as number,
     size: 3 as number,
-    width: "w-[30%]" as string,
+    width: "w-[32%]" as string,
   };
 
   changeWindow = () => {
@@ -87,7 +87,7 @@ export default class WorkList extends React.Component<Record<string, Array<Work>
       arr1: this.waterArr1,
       arr2: this.waterArr2,
       arr3: this.waterArr3,
-      width: document.body.offsetWidth > 798 ? "w-[30%]" : "w-[45%]",
+      width: document.body.offsetWidth > 798 ? "w-[32%]" : "w-[49%]",
     });
   };
 
