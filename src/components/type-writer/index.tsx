@@ -15,7 +15,8 @@ export default function TypeWriter({ id = "writer", writerList = [], timeSpace =
   useEffect(() => {
     if (!writerList.length) return;
     print();
-  }, writerList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [writerList]);
 
   const print = () => {
     let lastTime = 0;

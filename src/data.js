@@ -132,7 +132,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3',
     description: '前后端分离博客前台，功能：文章、说说、留言、评论、相册、友链、音乐',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css'],
-    cover: '/work/blogV3.png',
+    cover: 'http://mrzym.top/nextm/work/blogV3.png',
   },
   {
     id: 2,
@@ -141,7 +141,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blog-v3-admin',
     description: '前后端分离博客管理后台，功能：博客数据展示、文章管理、说说管理、留言管理、相册管理、友链管理',
     tag: ['Vue3', 'Element-Plus', 'TailWind.css', 'PureAdmin', 'Vite'],
-    cover: '/work/blogV3Admin.png',
+    cover: 'http://mrzym.top/nextm/work/blogV3Admin.png',
   },
   {
     id: 3,
@@ -150,7 +150,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/blogServer',
     description: '前后端分离博客后端服务',
     tag: ['Node.js', 'Koa'],
-    cover: '/work/blogServer.png',
+    cover: 'http://mrzym.top/nextm/work/blogServer.png',
   },
   {
     id: 4,
@@ -159,7 +159,7 @@ const myWorkList = [
     codeAddress: 'https://gitee.com/mrzym/react-app',
     description: '练习使用最新的react搭建项目',
     tag: ['React', 'React-router'],
-    cover: '/work/react18.png',
+    cover: 'http://mrzym.top/nextm/work/react18.png',
   }
 ]
 
