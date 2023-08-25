@@ -32,6 +32,17 @@ export default function Slider({ cardList, cardItemHeight }: slider) {
         <SliderItem cardList={arr1} height={cardItemHeight} />
         <SliderItem cardList={arr2} height={cardItemHeight} isSecond={true} />
       </div>
+      <div className="flex flex-wrap mt-[20px]">
+        {cardList.map((l) => {
+          return (
+            <span key={l.id} className="leading-relaxed">
+              <button style={{ color: l.color || "#000", backgroundImage: l.backgroundImage }} className="whitespace-pre ring ring-violet-100 outline-none hover:ring hover:ring-violet-300 rounded-3xl  py-[5px] px-[10px] m-[5px]">
+                {l.title}
+              </button>
+            </span>
+          );
+        })}
+      </div>
     </>
   );
 }

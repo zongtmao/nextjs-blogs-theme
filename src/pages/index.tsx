@@ -137,7 +137,7 @@ class Home extends React.Component<any, any> {
           </div>
           {/* 主页第二页 */}
           <CenterBox bgColor="#fff">
-            <div id="skills" className="w-[100%] h-[100vh] pt-[60px]">
+            <div id="skills" className="w-[100%] min-h-[100vh] pt-[60px]">
               <ScrollTrigger start="-200px center" end="0px center" scrub={2}>
                 <Tween
                   from={{
@@ -149,7 +149,7 @@ class Home extends React.Component<any, any> {
                 >
                   <div>
                     <HeaderTitle {...{ title: "Skills", size: 36 }} />
-                    <Slider cardList={this.state.tagList} cardItemHeight={280}></Slider>
+                    <Slider cardList={this.state.tagList} cardItemHeight={180}></Slider>
                   </div>
                 </Tween>
               </ScrollTrigger>
@@ -162,7 +162,7 @@ class Home extends React.Component<any, any> {
             </div>
           </CenterBox>
           <CenterBox>
-            <div id="about" className="w-[100%]  bg-transparent pt-[60px] flex flex-col">
+            <div id="about" className="w-[100%] bg-transparent pt-[60px] flex flex-col">
               <HeaderTitle {...{ title: "About", size: 36, color: "rgb(148 163 184)" }} />
               <Footer {...{ footerList }} />
             </div>

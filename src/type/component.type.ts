@@ -15,6 +15,7 @@ export type fountBubbleProps = {
   id: number;
   text?: string;
   tClass?: string;
+  isFirst?: boolean;
 };
 
 export type homeCenterProps = {

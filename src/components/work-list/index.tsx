@@ -79,7 +79,7 @@ export default class WorkList extends React.Component<Record<string, Array<work>
       arr1: this.waterArr1,
       arr2: this.waterArr2,
       arr3: this.waterArr3,
-      width: document.body.offsetWidth > 798 ? "w-[32%]" : "w-[49%]",
+      width: document.body.offsetWidth > 798 ? "w-[31%]" : "w-[49%]",
     });
   };
 

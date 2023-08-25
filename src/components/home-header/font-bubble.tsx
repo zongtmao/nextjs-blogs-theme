@@ -1,5 +1,6 @@
 import React, { createRef } from "react";
 
+import classes from "./index.module.scss";
 import { fountBubbleProps } from "@/type/component.type";
 
 export class FontBubble extends React.Component<fountBubbleProps, any> {
@@ -16,7 +17,7 @@ export class FontBubble extends React.Component<fountBubbleProps, any> {
 
   init = () => {
     const element = this.fontRef?.current;
-    let delay = this.delay();
+    let delay = this.delay(this.props.id);
     let duration = this.duration();
     if (element) {
       // 设置动画时间、位移等
@@ -26,6 +27,9 @@ export class FontBubble extends React.Component<fountBubbleProps, any> {
       element.style.setProperty("--x3", this.translate() + "px");
       element.style.setProperty("--x4", this.translate() + "px");
       element.style.setProperty("--duration", duration + "s");
+    }
+    if (this.props.isFirst) {
+      return;
     }
     // 记录动画消耗时间
     this.allTime = Math.round(delay + duration);
@@ -41,9 +45,9 @@ export class FontBubble extends React.Component<fountBubbleProps, any> {
     const element = this.fontRef?.current;
     if (element) {
       element.style.setProperty("--x1", this.translate() + "px");
-      element.style.setProperty("--x2", this.translate() + "s");
-      element.style.setProperty("--x3", this.translate() + "s");
-      element.style.setProperty("--x4", this.translate() + "s");
+      element.style.setProperty("--x2", this.translate() + "px");
+      element.style.setProperty("--x3", this.translate() + "px");
+      element.style.setProperty("--x4", this.translate() + "px");
     }
   };
 
@@ -56,14 +60,23 @@ export class FontBubble extends React.Component<fountBubbleProps, any> {
     let flag = 0;
     flag = Math.round(Math.random() * 6) / 100;
     if (flag > 2) {
-      return Math.round(Math.random() * 100);
+      return Math.round(Math.random() * 150);
     } else {
-      return 0 - Math.round(Math.random() * 100);
+      return 0 - Math.round(Math.random() * 150);
     }
   };
 
-  delay = () => {
-    return Math.round(Math.random() * 6);
+  delay = (id: number) => {
+    if (this.props.isFirst) {
+      return 0;
+    }
+    if (id < 3) {
+      return Math.round(Math.random() * (4 - 1) + 1);
+    } else if (id < 5) {
+      return Math.round(Math.random() * (8 - 4) + 4);
+    } else {
+      return Math.round(Math.random() * (12 - 8) + 8);
+    }
   };
 
   componentDidMount(): void {
@@ -76,10 +89,10 @@ export class FontBubble extends React.Component<fountBubbleProps, any> {
   }
 
   render(): React.ReactNode {
-    const { tClass, text } = this.props;
+    const { tClass, text, isFirst = false } = this.props;
     return (
       <>
-        <div ref={this.fontRef} className={`home-right-text whitespace-nowrap ${tClass}`}>
+        <div ref={this.fontRef} className={`${classes.homeRightText} ${isFirst ? classes.firstHomeRightText : ""}  whitespace-nowrap ${tClass}`}>
           {text}
         </div>
       </>

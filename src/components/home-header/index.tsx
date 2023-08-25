@@ -15,10 +15,10 @@ export default function HomeHeader(props: { sayingList: Array<string>; framework
 
   return (
     <>
-      <div className="flex flex-col md:flex-row md:pl-[80px]">
+      <div className="flex flex-col md:flex-row">
         <Reveal repeat>
-          <div className="w-[100%] h-[100vh] px-[50px] py-[30px] md:w-[50%] flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center items-start w-[90%]">
+          <div className="w-[100%] h-[100vh] py-[30px] md:w-[50%] flex flex-col justify-center items-end">
+            <div className="flex flex-col justify-center items-start w-[90%] md:w-[65%]">
               <Tween from={{ y: "-50px" }} to={{ y: "0px" }} stagger={0.05} duration={3} ease="elastic.out(2, 0.5)">
                 <div className="text-6xl break-keep leading-loose">Hello 👋</div>
                 <div className="text-4xl break-keep leading-relaxed">我是 M 😶‍🌫️</div>
@@ -41,6 +41,7 @@ export default function HomeHeader(props: { sayingList: Array<string>; framework
               }}
             >
               <div className="h-[100vh] flex items-center flex-wrap relative ">
+                <FontBubble {...{ id: 999, text: "项目框架", tClass: "text-orange-400 bg-violet-600 outline-none ring ring-violet-300 text-4xl", isFirst: true }}></FontBubble>
                 {frameworkList.map((frame) => {
                   return <FontBubble key={frame.id} {...{ id: frame.id, text: frame.text, tClass: frame.tClass }}></FontBubble>;
                 })}

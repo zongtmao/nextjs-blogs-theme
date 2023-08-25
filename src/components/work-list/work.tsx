@@ -60,7 +60,7 @@ export default function Work({ list, width, id }: workProps) {
       <div id={id} className={`${width} h-auto`}>
         {arr.map((work) => {
           return (
-            <div key={work.id} className={classes.workCard} onClick={() => goBlank(work.onlineAddress)}>
+            <div key={work.id} className={`${classes.workCard} mb-[8px] md:mb-[20px]`} onClick={() => goBlank(work.onlineAddress)}>
               <div className="grid place-items-center w-[100%] h-[120px] sm:h-[200px]">
                 <Image className="w-[100%] h-[120px] sm:h-[200px]" src={work.cover} alt={work.workName} width={800} height={100} priority={true} />
               </div>
