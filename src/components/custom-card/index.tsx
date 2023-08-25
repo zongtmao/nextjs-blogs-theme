@@ -1,17 +1,6 @@
-import { ReactNode } from "react";
 import classes from "./index.module.scss";
 
-type cardProps = {
-  width?: string;
-  height?: string;
-  right?: string;
-  background?: string;
-  children?: ReactNode;
-  cover?: string;
-  color?: string;
-  fontSize?: string;
-  backgroundImage?: string;
-};
+import { cardProps } from "@/type/component.type";
 
 export default function CustomCard(props: cardProps) {
   const { width = "80px", height = "80px", right = "20px", cover, children, background, color = "#000", backgroundImage, fontSize } = props;

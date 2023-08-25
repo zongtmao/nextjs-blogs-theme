@@ -31,6 +31,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{title}</title>
+        <link rel="shortcut icon" href="http://mrzym.top/nextm/favicon.ico" />
+        <meta name="keywords" content="小张的个人主页"></meta>
+        <meta name="description" content="一款基于Next.js、React18、Tailwind.css开发的静态个人主页"></meta>
       </Head>
       <Component {...pageProps} />
     </>

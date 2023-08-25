@@ -2,27 +2,13 @@ import Image from "next/image";
 import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
 
-type Work = {
-  id: number;
-  workName: string;
-  onlineAddress?: string;
-  codeAddress: string;
-  description: string;
-  tag: Array<string>;
-  cover: string;
-};
-
-type workProps = {
-  list: Array<Work>;
-  width: string;
-  id: string;
-};
+import { work, workProps } from "@/type/component.type";
 
 export default function Work({ list, width, id }: workProps) {
   // let current = 0;
   // let box: Element | null = null,
   //   observer: IntersectionObserver | null = null;
-  const [arr, setArr] = useState<Array<Work>>([]);
+  const [arr, setArr] = useState<Array<work>>([]);
 
   // const addWork = () => {
   //   setArr((arr) => {

@@ -1,14 +1,7 @@
 import { useEffect } from "react";
 import classes from "./index.module.scss";
 
-type typeWriterProps = {
-  id?: string;
-  writerList: Array<string>; // 打印文字列表
-  timeSpace?: number; // 句子与句子之间的播放间隔
-  wordPrintTime?: number; // 一个字打印的时间长度
-  size?: string; // 字体大小
-  color?: string; //字体颜色
-};
+import { typeWriterProps } from "@/type/component.type";
 
 export default function TypeWriter({ id = "writer", writerList = [], timeSpace = 0.8, wordPrintTime = 0.3, size = "1em", color }: typeWriterProps) {
   let arr: Array<NodeJS.Timeout> = [];

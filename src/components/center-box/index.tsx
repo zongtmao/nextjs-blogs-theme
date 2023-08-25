@@ -1,4 +1,6 @@
-export default function CenterBox({ bgColor, children }: any) {
+import { homeCenterProps } from "@/type/component.type";
+
+export default function CenterBox({ bgColor, children }: homeCenterProps) {
   return (
     <>
       <div className="w-[100vw] px-[3px]" style={{ backgroundColor: bgColor }}>

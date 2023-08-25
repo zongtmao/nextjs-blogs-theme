@@ -3,16 +3,8 @@ import { ScrollTrigger, Tween } from "react-gsap";
 import Work from "./work";
 import React from "react";
 
-type Work = {
-  id: number;
-  workName: string;
-  onlineAddress?: string;
-  codeAddress: string;
-  description: string;
-  tag: Array<string>;
-  cover: string;
-};
-export default class WorkList extends React.Component<Record<string, Array<Work>>, any> {
+import { work } from "@/type/component.type";
+export default class WorkList extends React.Component<Record<string, Array<work>>, any> {
   workList: any;
   timer: NodeJS.Timeout | null;
   waterArr1: Array<any>;
@@ -63,7 +55,7 @@ export default class WorkList extends React.Component<Record<string, Array<Work>
 
     // pc
     if (w > 768) {
-      this.workList.forEach((v: Work, index: number) => {
+      this.workList.forEach((v: work, index: number) => {
         if (index % 3 == 0) {
           this.waterArr1.push(v);
         } else if (index % 3 == 1) {
@@ -73,7 +65,7 @@ export default class WorkList extends React.Component<Record<string, Array<Work>
         }
       });
     } else {
-      this.workList.forEach((v: Work, index: number) => {
+      this.workList.forEach((v: work, index: number) => {
         if (index % 2 == 0) {
           this.waterArr1.push(v);
         } else {

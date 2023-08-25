@@ -4,7 +4,7 @@ import { ScrollTrigger, Tween } from "react-gsap";
 
 import { cardProps, menuProps as typeMenuProps } from "@/type/component.type";
 import { getDomHeightById, getScrollTop, getHalfScreenHeight } from "@/utils/hook";
-import { mySkillsList, myWorkList, sayingList, footerList } from "../data";
+import { sayingList, frameworkList, mySkillsList, myWorkList, footerList } from "../data";
 
 import Menu from "@/components/menu";
 import Slider from "@/components/slider-card";
@@ -133,7 +133,7 @@ class Home extends React.Component<any, any> {
           <Menu {...this.state.menuProps} ref={this.menuRef}></Menu>
           {/* 主页第一页 */}
           <div id="homeHeader">
-            <HomeHeader {...{ sayingList }} />
+            <HomeHeader {...{ sayingList, frameworkList }} />
           </div>
           {/* 主页第二页 */}
           <CenterBox bgColor="#fff">

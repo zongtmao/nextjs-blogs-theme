@@ -1,19 +1,6 @@
 import { ScrollTrigger, Tween, SplitChars } from "react-gsap";
 
-type footerProps = {
-  color?: string; // 字体颜色
-  footerList: Array<footer>;
-};
-type footer = {
-  title?: string;
-  list: Array<link>;
-};
-type link = {
-  id: string | number; // 唯一的key
-  title: string; // 名称
-  url?: string; // 链接地址
-  icon?: string; // 图标
-};
+import { footerProps } from "@/type/component.type";
 
 export default function Footer({ color = "rgb(148 163 184)", footerList = [] }: footerProps) {
   const goBlank = (url: string | undefined) => {

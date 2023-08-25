@@ -34,6 +34,7 @@
   padding: 5px 10px;
   border-radius: 30px;
   transform: translateX(-50%);
+  opacity: 0;
   animation: flying var(--duration) ease-in infinite var(--delay);
 }
 
@@ -44,6 +45,7 @@
   }
   25% {
     transform: translateX(var(--x1));
+    opacity: 1;
   }
 
   50% {
@@ -53,9 +55,13 @@
   75% {
     transform: translateX(var(--x3));
   }
+  85% {
+    opacity: 1;
+  }
   100% {
     transform: translateX(var(--x4));
     scale: 1.2;
     bottom: calc(100vh + 50px);
+    opacity: 0;
   }
 }

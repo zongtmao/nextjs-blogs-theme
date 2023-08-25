@@ -1,10 +1,39 @@
-// 卡片props
+import { ReactNode } from "react";
+
+// 首页打字机
+export type typeWriterProps = {
+  id?: string;
+  writerList: Array<string>; // 打印文字列表
+  timeSpace?: number; // 句子与句子之间的播放间隔
+  wordPrintTime?: number; // 一个字打印的时间长度
+  size?: string; // 字体大小
+  color?: string; //字体颜色
+};
+
+// 首页字体气泡类型
+export type fountBubbleProps = {
+  id: number;
+  text?: string;
+  tClass?: string;
+};
+
+export type homeCenterProps = {
+  bgColor?: string;
+  children: ReactNode;
+};
+
+// slider的 卡片props
 export type cardProps = {
-  id: string | number;
+  id: number;
   title: string;
+  width?: string;
+  height?: string;
+  right?: string;
+  background?: string;
+  children?: ReactNode;
   cover?: string;
   color?: string;
-  background?: string;
+  fontSize?: string;
   backgroundImage?: string;
 };
 
@@ -39,4 +68,38 @@ export type menuProps = {
 export type menu = {
   id: string;
   title: string;
+};
+
+// 作品 props
+export type workProps = {
+  list: Array<work>;
+  width: string;
+  id: string;
+};
+
+// 作品
+export type work = {
+  id: number;
+  workName: string;
+  onlineAddress?: string;
+  codeAddress: string;
+  description: string;
+  tag: Array<string>;
+  cover: string;
+};
+
+// footer 底部
+export type footerProps = {
+  color?: string; // 字体颜色
+  footerList: Array<footer>;
+};
+export type footer = {
+  title?: string;
+  list: Array<link>;
+};
+export type link = {
+  id: string | number; // 唯一的key
+  title: string; // 名称
+  url?: string; // 链接地址
+  icon?: string; // 图标
 };
