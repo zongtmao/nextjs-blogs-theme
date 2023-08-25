@@ -4,7 +4,7 @@ import "@/styles/global.scss";
 import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [title, setTitle] = useState<string>("M-blog");
+  const [title, setTitle] = useState<string>("Nextm-记录美好生活");
 
   useEffect(() => {
     // 监听 visibility change 事件
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
       setTitle("我在这里等你回来");
     };
     window.onfocus = function () {
-      setTitle("M-blog");
+      setTitle("Nextm-记录美好生活");
     };
   }, []);
 
