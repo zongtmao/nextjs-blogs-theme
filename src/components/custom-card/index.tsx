@@ -3,14 +3,14 @@ import classes from "./index.module.scss";
 import { cardProps } from "@/type/component.type";
 
 export default function CustomCard(props: cardProps) {
-  const { width = "80px", height = "80px", right = "20px", cover, children, background, color = "#000", backgroundImage, fontSize } = props;
+  const { width = "80px", height = "80px", right = "20px", cover, children, background, color = "#000", backgroundImage, fontSize, center = true } = props;
 
   let style = {
     width,
     height,
     marginRight: right,
-    lineHeight: height,
   };
+
   if (background) {
     Object.assign(style, {
       background,
@@ -33,7 +33,7 @@ export default function CustomCard(props: cardProps) {
 
   return (
     <>
-      <div className={classes.customCard} style={style}>
+      <div className={`${classes.customCard} ${center ? classes.center : ""}`} style={style}>
         <div className={classes.cardText} style={{ color, fontSize }}>
           {children}
         </div>

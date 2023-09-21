@@ -1,7 +1,6 @@
 .customCard {
   border-radius: 12px;
   overflow: hidden;
-  text-align: center;
   transition: all 0.2s;
   background-color: #fff;
   background-position: center;
@@ -22,10 +21,14 @@
   color: #000;
   overflow: hidden;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.2s;
   &:hover {
     transform: scale(1.5);
   }
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

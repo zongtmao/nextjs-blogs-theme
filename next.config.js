@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/nextm',
+  // basePath: '/nextm',
   productionBrowserSourceMaps: false,
   compiler: {
     styledComponents: true,

@@ -3,7 +3,7 @@ import classes from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { slider } from "@/type/component.type";
 
-export default function Slider({ cardList, cardItemHeight }: slider) {
+export default function SliderCard({ cardList, cardItemHeight }: slider) {
   const [arr1, setArr1] = useState<any>([]);
   const [arr2, setArr2] = useState<any>([]);
   useEffect(() => {

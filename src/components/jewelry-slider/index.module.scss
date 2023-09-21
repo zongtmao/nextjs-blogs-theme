@@ -1,0 +1,30 @@
+.slider {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.sliderItem {
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+
+  .first {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    animation: slider 60s linear infinite;
+  }
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

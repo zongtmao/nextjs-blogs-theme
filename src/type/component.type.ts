@@ -36,6 +36,7 @@ export type cardProps = {
   color?: string;
   fontSize?: string;
   backgroundImage?: string;
+  center?: boolean;
 };
 
 // slider组件

@@ -7,7 +7,7 @@ import { getDomHeightById, getScrollTop, getHalfScreenHeight } from "@/utils/hoo
 import { sayingList, frameworkList, mySkillsList, myWorkList, footerList } from "../data";
 
 import Menu from "@/components/menu";
-import Slider from "@/components/slider-card";
+import SliderCard from "@/components/slider-card";
 import Footer from "@/components/footer";
 import HomeHeader from "@/components/home-header";
 import CenterBox from "@/components/center-box";
@@ -149,7 +149,7 @@ class Home extends React.Component<any, any> {
                 >
                   <div>
                     <HeaderTitle {...{ title: "Skills", size: 36 }} />
-                    <Slider cardList={this.state.tagList} cardItemHeight={180}></Slider>
+                    <SliderCard cardList={this.state.tagList} cardItemHeight={180}></SliderCard>
                   </div>
                 </Tween>
               </ScrollTrigger>
